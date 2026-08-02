@@ -1,86 +1,3 @@
-// import { siteConfig } from "@/src/utils/data";
-// import { ChevronRight, Linkedin, Globe, Mail, BookOpen } from "lucide-react";
-// import Image from "next/image";
-
-// export default function Hero() {
-//   return (
-//     <section
-//       id="home"
-//       className="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden"
-//     >
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-//         <div className="flex flex-col lg:flex-row items-center gap-12">
-//           <div className="flex-1 text-center lg:text-left">
-//             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
-//               {siteConfig.name}
-//             </h1>
-//             <p className="text-xl sm:text-2xl font-medium text-indigo-700 mt-2">
-//               {siteConfig.title}
-//             </p>
-//             <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto lg:mx-0">
-//               {siteConfig.tagline}
-//             </p>
-//             <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
-//               <a
-//                 href="#contact"
-//                 className="inline-flex items-center px-6 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-xl transition shadow-lg shadow-indigo-200"
-//               >
-//                 Contact
-//                 <ChevronRight className="ml-2 w-4 h-4" />
-//               </a>
-//             </div>
-//             <div className="flex gap-4 mt-6 justify-center lg:justify-start">
-//               <a
-//                 href={siteConfig.social.linkedin}
-//                 className="p-2 bg-gray-100 rounded-full hover:bg-indigo-100 transition"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//               >
-//                 <Linkedin className="w-5 h-5 text-gray-700" />
-//               </a>
-//               <a
-//                 href={siteConfig.social.researchgate}
-//                 className="p-2 bg-gray-100 rounded-full hover:bg-indigo-100 transition"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//               >
-//                 <Globe className="w-5 h-5 text-gray-700" />
-//               </a>
-//               <a
-//                 href={`mailto:${siteConfig.email}`}
-//                 className="p-2 bg-gray-100 rounded-full hover:bg-indigo-100 transition"
-//               >
-//                 <Mail className="w-5 h-5 text-gray-700" />
-//               </a>
-//               <a
-//                 href={siteConfig.social.orcid}
-//                 className="p-2 bg-gray-100 rounded-full hover:bg-indigo-100 transition"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//               >
-//                 <BookOpen className="w-5 h-5 text-gray-700" />
-//               </a>
-//             </div>
-//           </div>
-//           <div className="flex-shrink-0">
-//             <div className="rounded-2xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center shadow-2xl border-4 border-white">
-//               <Image
-//                 src={"/images/kazi.png"}
-//                 width={456}
-//                 height={456}
-//                 alt="kazi pic"
-//                 className="rounded-2xl"
-//               />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       <div className="absolute -top-20 -right-20 w-72 h-72 bg-indigo-200/30 rounded-full blur-3xl" />
-//       <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl" />
-//     </section>
-//   );
-// }
-
 import {
   ChevronRight,
   Linkedin,
@@ -91,9 +8,10 @@ import {
   Building2,
   GraduationCap,
   Users,
-  Award,
 } from "lucide-react";
 import Image from "next/image";
+import SlideLeft from "@/src/components/Common/Animaation/SlideLeft";
+import SlideRight from "@/src/components/Common/Animaation/SlideRight";
 
 export default function Hero() {
   return (
@@ -109,7 +27,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left Content */}
-          <div className="flex-1 text-center lg:text-left">
+          <SlideLeft className="flex-1 text-center lg:text-left">
             {/* Name */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
               Dr. Kazi Abdus Sobur
@@ -232,20 +150,20 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </SlideLeft>
 
           {/* Right - Profile Image */}
-          <div className="flex-shrink-0">
-            <div className="relative">
+          <SlideRight className="flex-shrink-0">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] xl:w-[456px] xl:h-[456px] mx-auto">
               {/* Glow Ring */}
               <div className="absolute -inset-4 bg-gradient-to-br from-indigo-300/30 to-indigo-400/30 rounded-2xl blur-2xl" />
 
               {/* Image Container */}
-              <div className="relative rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-200/50 flex items-center justify-center shadow-2xl border-4 border-white overflow-hidden">
+              <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-indigo-100 to-indigo-200/50 flex items-center justify-center shadow-2xl border-4 border-white overflow-hidden">
                 <Image
                   src={"/images/kazi.png"}
-                  width={456}
-                  height={456}
+                  fill
+                  sizes="(max-width: 640px) 16rem, (max-width: 768px) 20rem, (max-width: 1024px) 24rem, (max-width: 1280px) 420px, 456px"
                   alt="Dr. Kazi Abdus Sobur"
                   className="rounded-2xl object-cover"
                   priority
@@ -260,14 +178,8 @@ export default function Hero() {
                 </span>
                 Available for Consultancy
               </div>
-
-              {/* Badge - ResearchGate */}
-              {/* <div className="absolute -top-3 -left-3 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-3 py-1.5 rounded-xl shadow-lg text-[10px] font-bold tracking-wider flex items-center gap-1.5">
-                <Globe className="w-3 h-3" />
-                RESEARCHGATE
-              </div> */}
             </div>
-          </div>
+          </SlideRight>
         </div>
       </div>
     </section>

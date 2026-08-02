@@ -6,39 +6,39 @@ import {
   FaLinkedin,
   FaYoutube,
 } from "react-icons/fa";
+import SlideUp from "@/src/components/Common/Animaation/SlideUp";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden py-10 px-4 border-t border-white/10 ">
+    <footer className="relative overflow-hidden py-10 px-4 border-t border-indigo-900/10">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,#2C1B61_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,#4338CA_1px,transparent_1px)] bg-size-[40px_40px]"></div>
       </div>
 
-      <div className="container">
-        <h2 className="text-3xl font-bold text-white mb-4">
-          <span className="bg-linear-to-r from-[#2C1B61] to-[#6D28D9] bg-clip-text text-transparent">
-            OMS
+      <SlideUp className="container">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <span className="bg-linear-to-r from-indigo-700 to-indigo-500 bg-clip-text text-transparent">
+            Dr. Kazi Abdus Sobur
           </span>
         </h2>
-        {/* Main Footer - 5 Column Grid */}
-     
-
         {/* Brand & Social Section */}
-        <div className="">
+        <div className="border-t border-gray-100 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             {/* Brand */}
             <div>
               <div className="text-center md:text-left">
                 <p className="text-gray-500 text-sm">
                   © {currentYear}{" "}
-                  <span className="text-[#6D28D9] font-medium">OMS</span>. All
-                  rights reserved.
+                  <span className="text-indigo-700 font-medium">
+                    Dr. Kazi Abdus Sobur
+                  </span>
+                  . All rights reserved.
                 </p>
-                <p className="text-gray-600 text-sm mt-1">
-                  AI-powered marketing excellence
+                <p className="text-gray-500 text-sm mt-1">
+                  Veterinarian | Researcher | Consultant
                 </p>
               </div>
             </div>
@@ -47,25 +47,25 @@ const Footer = () => {
               <div className="flex flex-wrap justify-center gap-6">
                 <Link
                   href="/privacy-policy"
-                  className="text-gray-500 hover:text-white text-sm transition-colors"
+                  className="text-gray-500 hover:text-indigo-700 text-sm transition-colors"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/terms"
-                  className="text-gray-500 hover:text-white text-sm transition-colors"
+                  className="text-gray-500 hover:text-indigo-700 text-sm transition-colors"
                 >
                   Terms of Service
                 </Link>
                 <Link
                   href="/cookies"
-                  className="text-gray-500 hover:text-white text-sm transition-colors"
+                  className="text-gray-500 hover:text-indigo-700 text-sm transition-colors"
                 >
                   Cookie Policy
                 </Link>
                 <Link
                   href="/sitemap"
-                  className="text-gray-500 hover:text-white text-sm transition-colors"
+                  className="text-gray-500 hover:text-indigo-700 text-sm transition-colors"
                 >
                   Sitemap
                 </Link>
@@ -76,38 +76,38 @@ const Footer = () => {
             <div className="flex items-center gap-4">
               <a
                 href="#"
-                className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#6D28D9]/50 hover:bg-white/10 transition-all duration-300"
+                className="w-12 h-12 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 hover:text-white hover:bg-indigo-700 hover:border-indigo-700 transition-all duration-300"
               >
                 <FaFacebook size={20} />
               </a>
               <a
                 href="#"
-                className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#6D28D9]/50 hover:bg-white/10 transition-all duration-300"
+                className="w-12 h-12 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 hover:text-white hover:bg-indigo-700 hover:border-indigo-700 transition-all duration-300"
               >
                 <FaTwitter size={20} />
               </a>
               <a
                 href="#"
-                className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#6D28D9]/50 hover:bg-white/10 transition-all duration-300"
+                className="w-12 h-12 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 hover:text-white hover:bg-indigo-700 hover:border-indigo-700 transition-all duration-300"
               >
                 <FaInstagram size={20} />
               </a>
               <a
                 href="#"
-                className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#6D28D9]/50 hover:bg-white/10 transition-all duration-300"
+                className="w-12 h-12 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 hover:text-white hover:bg-indigo-700 hover:border-indigo-700 transition-all duration-300"
               >
                 <FaLinkedin size={20} />
               </a>
               <a
                 href="#"
-                className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#6D28D9]/50 hover:bg-white/10 transition-all duration-300"
+                className="w-12 h-12 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 hover:text-white hover:bg-indigo-700 hover:border-indigo-700 transition-all duration-300"
               >
                 <FaYoutube size={20} />
               </a>
             </div>
           </div>
         </div>
-      </div>
+      </SlideUp>
     </footer>
   );
 };

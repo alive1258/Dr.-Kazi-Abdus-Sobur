@@ -3,20 +3,35 @@
 import {
   Briefcase,
   MapPin,
-  Calendar,
   Award,
   ExternalLink,
-  Users,
   Building2,
   Clock,
   Star,
 } from "lucide-react";
 import { useState } from "react";
+import SlideDown from "@/src/components/Common/Animaation/SlideDown";
+import SlideUp from "@/src/components/Common/Animaation/SlideUp";
+import SlideLeft from "@/src/components/Common/Animaation/SlideLeft";
+import SlideRight from "@/src/components/Common/Animaation/SlideRight";
+
+interface ExperienceItem {
+  id: number;
+  title: string;
+  organization: string;
+  period: string;
+  type: string;
+  location: string;
+  description: string;
+  skills: string[];
+  color: string;
+  bgColor: string;
+}
 
 export default function Experiences() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  const experienceData = [
+  const experienceData: ExperienceItem[] = [
     {
       id: 1,
       title: "Senior Research Assistant",
@@ -27,8 +42,8 @@ export default function Experiences() {
       description:
         "Assisted in literature reviews, study design, data collection and analysis, research documentation, manuscript preparation, and project coordination while ensuring research quality and ethical compliance.",
       skills: ["Project Management"],
-      color: "from-emerald-500 to-teal-500",
-      bgColor: "bg-emerald-50",
+      color: "from-indigo-500 to-indigo-600",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 2,
@@ -45,8 +60,8 @@ export default function Experiences() {
         "Academic Writing",
         "Mentoring",
       ],
-      color: "from-blue-500 to-indigo-500",
-      bgColor: "bg-blue-50",
+      color: "from-indigo-600 to-indigo-700",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 3,
@@ -64,8 +79,8 @@ export default function Experiences() {
         "Data Analysis",
         "Thesis Writing",
       ],
-      color: "from-cyan-500 to-blue-500",
-      bgColor: "bg-cyan-50",
+      color: "from-indigo-400 to-indigo-600",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 4,
@@ -82,8 +97,8 @@ export default function Experiences() {
         "Workshop Facilitation",
         "Community Building",
       ],
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-50",
+      color: "from-indigo-700 to-indigo-900",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 5,
@@ -102,8 +117,8 @@ export default function Experiences() {
         "Academic Relations",
         "Brand Management",
       ],
-      color: "from-orange-500 to-amber-500",
-      bgColor: "bg-orange-50",
+      color: "from-indigo-500 to-indigo-800",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 6,
@@ -121,8 +136,8 @@ export default function Experiences() {
         "Data Management",
         "Training",
       ],
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-50",
+      color: "from-indigo-500 to-indigo-600",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 7,
@@ -143,8 +158,8 @@ export default function Experiences() {
         "Animal Health",
         "Regulatory Compliance",
       ],
-      color: "from-red-500 to-rose-500",
-      bgColor: "bg-red-50",
+      color: "from-indigo-600 to-indigo-700",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 8,
@@ -156,7 +171,7 @@ export default function Experiences() {
       description:
         "Global Outreach - Contributing Member. Active participation in ASM activities and global outreach programs.",
       skills: ["Medical Microbiology", "Microbiology", "Global Outreach"],
-      color: "from-indigo-500 to-purple-500",
+      color: "from-indigo-400 to-indigo-600",
       bgColor: "bg-indigo-50",
     },
     {
@@ -175,8 +190,8 @@ export default function Experiences() {
         "Research Methodology",
         "Data Analysis",
       ],
-      color: "from-teal-500 to-cyan-500",
-      bgColor: "bg-teal-50",
+      color: "from-indigo-700 to-indigo-900",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 10,
@@ -193,8 +208,8 @@ export default function Experiences() {
         "Content Management",
         "Web Design",
       ],
-      color: "from-amber-500 to-yellow-500",
-      bgColor: "bg-amber-50",
+      color: "from-indigo-500 to-indigo-800",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 11,
@@ -206,8 +221,8 @@ export default function Experiences() {
       description:
         "Moderation of posters related to BCS, questions, write explanations of questions.",
       skills: ["Content Management", "Microsoft Excel", "Question Analysis"],
-      color: "from-sky-500 to-blue-500",
-      bgColor: "bg-sky-50",
+      color: "from-indigo-500 to-indigo-600",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 12,
@@ -219,8 +234,8 @@ export default function Experiences() {
       description:
         "Standing Committee of One Health. Focused on Veterinary Public Health initiatives.",
       skills: ["Veterinary Public Health", "One Health", "Public Health"],
-      color: "from-rose-500 to-pink-500",
-      bgColor: "bg-rose-50",
+      color: "from-indigo-600 to-indigo-700",
+      bgColor: "bg-indigo-50",
     },
   ];
 
@@ -241,51 +256,55 @@ export default function Experiences() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-12">
-          <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg shadow-indigo-200">
-            <Briefcase className="w-8 h-8 text-white" />
+        <SlideDown>
+          <div className="flex items-center gap-3 sm:gap-4 mb-12">
+            <div className="p-2.5 sm:p-3 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl shadow-lg shadow-indigo-200 flex-shrink-0">
+              <Briefcase className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+            </div>
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
+                Professional Experience
+              </h2>
+              <p className="text-gray-500 mt-1 text-sm sm:text-base">
+                12+ years of diverse professional journey
+              </p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Professional Experience
-            </h2>
-            <p className="text-gray-500 mt-1">
-              12+ years of diverse professional journey
-            </p>
-          </div>
-        </div>
+        </SlideDown>
 
         {/* Stats Summary */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-2xl font-bold text-indigo-600">
-              {totalExperience}
+        <SlideUp>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
+              <div className="text-2xl font-bold text-indigo-600">
+                {totalExperience}
+              </div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider">
+                Total Roles
+              </div>
             </div>
-            <div className="text-xs text-gray-500 uppercase tracking-wider">
-              Total Roles
+            <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
+              <div className="text-2xl font-bold text-indigo-600">
+                {currentRoles}
+              </div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider">
+                Current Roles
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
+              <div className="text-2xl font-bold text-indigo-600">12+</div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider">
+                Organizations
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
+              <div className="text-2xl font-bold text-indigo-600">40+</div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider">
+                Skills
+              </div>
             </div>
           </div>
-          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-2xl font-bold text-indigo-600">
-              {currentRoles}
-            </div>
-            <div className="text-xs text-gray-500 uppercase tracking-wider">
-              Current Roles
-            </div>
-          </div>
-          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-2xl font-bold text-indigo-600">12+</div>
-            <div className="text-xs text-gray-500 uppercase tracking-wider">
-              Organizations
-            </div>
-          </div>
-          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-2xl font-bold text-indigo-600">40+</div>
-            <div className="text-xs text-gray-500 uppercase tracking-wider">
-              Skills
-            </div>
-          </div>
-        </div>
+        </SlideUp>
 
         {/* Experience Timeline */}
         <div className="relative">
@@ -293,146 +312,155 @@ export default function Experiences() {
           <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-200 via-indigo-300 to-indigo-200 hidden md:block" />
 
           <div className="space-y-6">
-            {experienceData.map((exp, index) => (
-              <div key={exp.id} className="relative md:flex md:gap-6 group">
-                {/* Timeline Dot */}
-                <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-lg shadow-indigo-200 flex-shrink-0 mt-1 z-10">
-                  {index + 1}
-                </div>
+            {experienceData.map((exp, index) => {
+              const AnimWrapper = index % 2 === 0 ? SlideLeft : SlideRight;
+              const staggerDelay = Math.min(index + 1, 6);
 
-                {/* Mobile Dot */}
-                <div className="md:hidden absolute left-0 top-1 w-3 h-3 rounded-full bg-indigo-500" />
+              return (
+                <AnimWrapper key={exp.id} delay={staggerDelay}>
+                  <div className="relative md:flex md:gap-6 group">
+                    {/* Timeline Dot */}
+                    <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-indigo-600 to-indigo-800 text-white font-bold text-sm shadow-lg shadow-indigo-200 flex-shrink-0 mt-1 z-10">
+                      {index + 1}
+                    </div>
 
-                {/* Content Card */}
-                <div className="md:flex-1 ml-8 md:ml-0">
-                  <div
-                    className={`bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer ${
-                      expandedId === exp.id
-                        ? "ring-2 ring-indigo-300 shadow-xl"
-                        : ""
-                    }`}
-                    onClick={() => toggleExpand(exp.id)}
-                  >
-                    {/* Header */}
-                    <div className="flex flex-wrap items-start justify-between gap-3">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span
-                            className={`text-xs font-bold px-3 py-1 rounded-full bg-gradient-to-r ${exp.color} text-white uppercase tracking-wider`}
-                          >
-                            {exp.type}
-                          </span>
-                          <span className="text-xs font-medium text-gray-400 flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
-                            {exp.period}
-                          </span>
-                        </div>
+                    {/* Mobile Dot */}
+                    <div className="md:hidden absolute left-0 top-1 w-3 h-3 rounded-full bg-indigo-500" />
 
-                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mt-2">
-                          {exp.title}
-                        </h3>
+                    {/* Content Card */}
+                    <div className="md:flex-1 ml-8 md:ml-0">
+                      <div
+                        className={`bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer ${
+                          expandedId === exp.id
+                            ? "ring-2 ring-indigo-300 shadow-xl"
+                            : ""
+                        }`}
+                        onClick={() => toggleExpand(exp.id)}
+                      >
+                        {/* Header */}
+                        <div className="flex flex-wrap items-start justify-between gap-3">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span
+                                className={`text-xs font-bold px-3 py-1 rounded-full bg-gradient-to-r ${exp.color} text-white uppercase tracking-wider`}
+                              >
+                                {exp.type}
+                              </span>
+                              <span className="text-xs font-medium text-gray-400 flex items-center gap-1">
+                                <Clock className="w-3 h-3" />
+                                {exp.period}
+                              </span>
+                            </div>
 
-                        <div className="flex items-center gap-3 mt-1 flex-wrap">
-                          <div className="flex items-center gap-1.5">
-                            <Building2 className="w-4 h-4 text-indigo-500" />
-                            <p className="text-indigo-700 font-medium text-sm">
-                              {exp.organization}
-                            </p>
-                          </div>
-                          {exp.location && (
-                            <>
-                              <span className="text-gray-300">|</span>
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-2">
+                              {exp.title}
+                            </h3>
+
+                            <div className="flex items-center gap-3 mt-1 flex-wrap">
                               <div className="flex items-center gap-1.5">
-                                <MapPin className="w-3.5 h-3.5 text-gray-400" />
-                                <p className="text-gray-500 text-sm">
-                                  {exp.location}
+                                <Building2 className="w-4 h-4 text-indigo-500" />
+                                <p className="text-indigo-700 font-medium text-sm">
+                                  {exp.organization}
                                 </p>
                               </div>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-gray-600 text-sm mt-3 leading-relaxed line-clamp-2">
-                      {exp.description}
-                    </p>
-
-                    {/* Skills Preview */}
-                    {exp.skills && exp.skills.length > 0 && (
-                      <div className="mt-3 flex flex-wrap gap-1.5">
-                        {exp.skills.slice(0, 3).map((skill, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-xs font-medium rounded-full border border-indigo-100"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                        {exp.skills.length > 3 && (
-                          <span className="px-2 py-0.5 text-gray-400 text-xs font-medium">
-                            +{exp.skills.length - 3} more
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    {/* Expand Indicator */}
-                    <div className="mt-3 flex items-center gap-2 text-xs text-gray-400">
-                      <span className="text-indigo-400">Click to expand</span>
-                      <span className="text-indigo-300 text-sm">
-                        {expandedId === exp.id ? "−" : "+"}
-                      </span>
-                    </div>
-
-                    {/* Expanded Content */}
-                    {expandedId === exp.id && (
-                      <div className="mt-4 pt-4 border-t border-gray-100 space-y-4 animate-fade-in">
-                        {/* Full Description */}
-                        <div>
-                          <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2">
-                            <Award className="w-3 h-3" />
-                            Description
-                          </h4>
-                          <p className="text-sm text-gray-700 mt-1 leading-relaxed">
-                            {exp.description}
-                          </p>
+                              {exp.location && (
+                                <>
+                                  <span className="text-gray-300">|</span>
+                                  <div className="flex items-center gap-1.5">
+                                    <MapPin className="w-3.5 h-3.5 text-gray-400" />
+                                    <p className="text-gray-500 text-sm">
+                                      {exp.location}
+                                    </p>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
                         </div>
 
-                        {/* All Skills */}
+                        {/* Description */}
+                        <p className="text-gray-600 text-sm mt-3 leading-relaxed line-clamp-2">
+                          {exp.description}
+                        </p>
+
+                        {/* Skills Preview */}
                         {exp.skills && exp.skills.length > 0 && (
-                          <div>
-                            <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2">
-                              <Star className="w-3 h-3" />
-                              Skills
-                            </h4>
-                            <div className="flex flex-wrap gap-1.5 mt-1.5">
-                              {exp.skills.map((skill, idx) => (
-                                <span
-                                  key={idx}
-                                  className="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-medium rounded-full border border-indigo-100"
-                                >
-                                  {skill}
-                                </span>
-                              ))}
+                          <div className="mt-3 flex flex-wrap gap-1.5">
+                            {exp.skills.slice(0, 3).map((skill, idx) => (
+                              <span
+                                key={idx}
+                                className="px-2 py-0.5 bg-indigo-50 text-indigo-700 text-xs font-medium rounded-full border border-indigo-100"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                            {exp.skills.length > 3 && (
+                              <span className="px-2 py-0.5 text-gray-400 text-xs font-medium">
+                                +{exp.skills.length - 3} more
+                              </span>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Expand Indicator */}
+                        <div className="mt-3 flex items-center gap-2 text-xs text-gray-400">
+                          <span className="text-indigo-400">
+                            Click to expand
+                          </span>
+                          <span className="text-indigo-300 text-sm">
+                            {expandedId === exp.id ? "−" : "+"}
+                          </span>
+                        </div>
+
+                        {/* Expanded Content */}
+                        {expandedId === exp.id && (
+                          <div className="mt-4 pt-4 border-t border-gray-100 space-y-4 animate-fade-in">
+                            {/* Full Description */}
+                            <div>
+                              <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                                <Award className="w-3 h-3" />
+                                Description
+                              </h4>
+                              <p className="text-sm text-gray-700 mt-1 leading-relaxed">
+                                {exp.description}
+                              </p>
+                            </div>
+
+                            {/* All Skills */}
+                            {exp.skills && exp.skills.length > 0 && (
+                              <div>
+                                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                                  <Star className="w-3 h-3" />
+                                  Skills
+                                </h4>
+                                <div className="flex flex-wrap gap-1.5 mt-1.5">
+                                  {exp.skills.map((skill, idx) => (
+                                    <span
+                                      key={idx}
+                                      className="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-medium rounded-full border border-indigo-100"
+                                    >
+                                      {skill}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* View Details Link */}
+                            <div className="pt-2">
+                              <button className="text-indigo-600 text-sm font-medium hover:text-indigo-700 transition-colors flex items-center gap-1">
+                                View Details
+                                <ExternalLink className="w-3 h-3" />
+                              </button>
                             </div>
                           </div>
                         )}
-
-                        {/* View Details Link */}
-                        <div className="pt-2">
-                          <button className="text-indigo-600 text-sm font-medium hover:text-indigo-700 transition-colors flex items-center gap-1">
-                            View Details
-                            <ExternalLink className="w-3 h-3" />
-                          </button>
-                        </div>
                       </div>
-                    )}
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </AnimWrapper>
+              );
+            })}
           </div>
         </div>
       </div>

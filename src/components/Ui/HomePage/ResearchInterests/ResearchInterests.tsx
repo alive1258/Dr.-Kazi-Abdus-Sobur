@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   Microscope,
@@ -22,7 +22,35 @@ import {
   ChevronUp,
   Filter,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+import SlideUp from "@/src/components/Common/Animaation/SlideUp";
+import SlideDown from "@/src/components/Common/Animaation/SlideDown";
+import ZoomIn from "@/src/components/Common/Animaation/ZoomIn";
+
+interface PublicationArea {
+  name: string;
+  count: number;
+  icon: ReactNode;
+}
+
+interface Publication {
+  title: string;
+  journal: string;
+  date: string;
+  authors: string[];
+  type: string;
+  fullText: boolean;
+}
+
+const publicationTypeStyles: Record<string, string> = {
+  Review: "bg-indigo-200 text-indigo-800",
+  Chapter: "bg-indigo-50 text-indigo-600",
+  Book: "bg-indigo-300 text-indigo-900",
+  "Conference Paper": "bg-indigo-100 text-indigo-500",
+  Poster: "bg-indigo-400 text-white",
+};
+
+const defaultPublicationTypeStyle = "bg-indigo-100 text-indigo-700";
 
 export default function ResearchInterests() {
   const [showAllPublications, setShowAllPublications] = useState(false);
@@ -47,7 +75,7 @@ export default function ResearchInterests() {
     "Zoonotic Diseases",
   ];
 
-  const publicationAreas = [
+  const publicationAreas: PublicationArea[] = [
     { name: "One Health", count: 8, icon: <Heart className="w-4 h-4" /> },
     {
       name: "Zoonotic Diseases",
@@ -63,7 +91,7 @@ export default function ResearchInterests() {
   ];
 
   // All publications from your profile
-  const allPublications = [
+  const allPublications: Publication[] = [
     {
       title:
         "Optimizing Growth Performance in New Zealand White Rabbits: The Effects of Varying Energy and Protein Levels",
@@ -498,10 +526,6 @@ export default function ResearchInterests() {
     ? allPublications
     : allPublications.slice(0, 6);
 
-  const years = [
-    "all",
-    ...new Set(allPublications.map((p) => p.date.split(" ")[1])),
-  ];
   const filteredPublications =
     selectedYear === "all"
       ? displayedPublications
@@ -514,61 +538,61 @@ export default function ResearchInterests() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-12">
-          <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg shadow-indigo-200">
-            <Microscope className="w-8 h-8 text-white" />
+        <SlideDown className="flex items-center gap-3 sm:gap-4 mb-10 md:mb-12">
+          <div className="p-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl shadow-lg shadow-indigo-200 shrink-0">
+            <Microscope className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
           </div>
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
               Research & Publications
             </h2>
-            <p className="text-gray-500 mt-1">
+            <p className="text-gray-500 mt-1 text-sm sm:text-base">
               Contributing to global scientific knowledge
             </p>
           </div>
-        </div>
+        </SlideDown>
 
         {/* Stats Overview */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-          <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="text-3xl font-bold text-indigo-600 group-hover:scale-105 transition-transform">
+        <SlideUp className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10">
+          <div className="bg-white rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+            <div className="text-2xl sm:text-3xl font-bold text-indigo-600 group-hover:scale-105 transition-transform">
               {researchStats.publications}
             </div>
             <div className="text-xs text-gray-500 uppercase tracking-wider mt-1 flex items-center justify-center gap-1">
               <FileText className="w-3 h-3" /> Publications
             </div>
           </div>
-          <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="text-3xl font-bold text-indigo-600 group-hover:scale-105 transition-transform">
+          <div className="bg-white rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+            <div className="text-2xl sm:text-3xl font-bold text-indigo-600 group-hover:scale-105 transition-transform">
               {researchStats.reads.toLocaleString()}
             </div>
             <div className="text-xs text-gray-500 uppercase tracking-wider mt-1 flex items-center justify-center gap-1">
               <Users className="w-3 h-3" /> Reads
             </div>
           </div>
-          <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="text-3xl font-bold text-indigo-600 group-hover:scale-105 transition-transform">
+          <div className="bg-white rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+            <div className="text-2xl sm:text-3xl font-bold text-indigo-600 group-hover:scale-105 transition-transform">
               {researchStats.citations}
             </div>
             <div className="text-xs text-gray-500 uppercase tracking-wider mt-1 flex items-center justify-center gap-1">
               <Quote className="w-3 h-3" /> Citations
             </div>
           </div>
-          <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="text-3xl font-bold text-indigo-600 group-hover:scale-105 transition-transform">
+          <div className="bg-white rounded-2xl p-4 sm:p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+            <div className="text-2xl sm:text-3xl font-bold text-indigo-600 group-hover:scale-105 transition-transform">
               h-index 5
             </div>
             <div className="text-xs text-gray-500 uppercase tracking-wider mt-1 flex items-center justify-center gap-1">
               <Award className="w-3 h-3" /> h-index
             </div>
           </div>
-        </div>
+        </SlideUp>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Left Column - Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Introduction */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+            <SlideUp className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm border border-gray-100">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-indigo-100 rounded-lg">
                   <BookOpen className="w-5 h-5 text-indigo-600" />
@@ -577,7 +601,7 @@ export default function ResearchInterests() {
                   Introduction
                 </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                 Veterinarian, microbiologist, and researcher working at the
                 intersection of epidemiology, zoonotic diseases, antimicrobial
                 resistance, vaccine development, and One Health. Author of
@@ -588,13 +612,13 @@ export default function ResearchInterests() {
                 technical expertise with practical solutions for animal and
                 public health challenges.
               </p>
-            </div>
+            </SlideUp>
 
             {/* Skills */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+            <SlideUp className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm border border-gray-100">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Star className="w-5 h-5 text-purple-600" />
+                <div className="p-2 bg-indigo-200 rounded-lg">
+                  <Star className="w-5 h-5 text-indigo-700" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">
                   Skills & Expertise
@@ -604,45 +628,47 @@ export default function ResearchInterests() {
                 {skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1.5 bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-700 text-sm font-medium rounded-full border border-indigo-100 hover:shadow-md transition-shadow"
+                    className="px-3 py-1.5 bg-gradient-to-r from-indigo-50 to-indigo-100 text-indigo-700 text-xs sm:text-sm font-medium rounded-full border border-indigo-100 hover:shadow-md transition-shadow"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-            </div>
+            </SlideUp>
 
             {/* Publication Areas */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+            <SlideUp className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm border border-gray-100">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-emerald-100 rounded-lg">
-                  <Library className="w-5 h-5 text-emerald-600" />
+                <div className="p-2 bg-indigo-50 rounded-lg">
+                  <Library className="w-5 h-5 text-indigo-500" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">
                   Publication Areas
                 </h3>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {publicationAreas.map((area, index) => (
-                  <div
-                    key={index}
-                    className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-4 text-center border border-indigo-100 hover:shadow-md transition-shadow"
+                {publicationAreas.map((area) => (
+                  <ZoomIn
+                    key={area.name}
+                    className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-4 text-center border border-indigo-100 hover:shadow-md transition-shadow"
                   >
-                    <div className="text-2xl mb-1">{area.icon}</div>
+                    <div className="text-2xl mb-1 flex justify-center text-indigo-600">
+                      {area.icon}
+                    </div>
                     <div className="text-lg font-bold text-indigo-600">
                       {area.count}
                     </div>
                     <div className="text-xs text-gray-600 font-medium">
                       {area.name}
                     </div>
-                  </div>
+                  </ZoomIn>
                 ))}
               </div>
-            </div>
+            </SlideUp>
 
             {/* Publications List */}
-            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+            <div className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm border border-gray-100">
+              <SlideDown className="flex items-center justify-between mb-4 flex-wrap gap-3">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-indigo-100 rounded-lg">
                     <FileText className="w-5 h-5 text-indigo-600" />
@@ -651,12 +677,12 @@ export default function ResearchInterests() {
                     Publications
                   </h3>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-gray-400" />
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  <Filter className="w-4 h-4 text-gray-400 shrink-0" />
                   <select
                     value={selectedYear}
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-auto"
                   >
                     <option value="all">All Years</option>
                     <option value="2026">2026</option>
@@ -665,12 +691,13 @@ export default function ResearchInterests() {
                     <option value="2023">2023</option>
                   </select>
                 </div>
-              </div>
+              </SlideDown>
 
               <div className="space-y-4">
                 {filteredPublications.map((pub, index) => (
-                  <div
-                    key={index}
+                  <SlideUp
+                    key={pub.title}
+                    delay={Math.min(index + 1, 6)}
                     className="border-b border-gray-100 pb-4 last:border-0 last:pb-0 hover:bg-gray-50/50 p-3 rounded-xl transition-colors"
                   >
                     <h4 className="text-sm font-semibold text-gray-800">
@@ -685,23 +712,14 @@ export default function ResearchInterests() {
                       <span className="text-gray-300">•</span>
                       <span
                         className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${
-                          pub.type === "Review"
-                            ? "bg-purple-100 text-purple-700"
-                            : pub.type === "Chapter"
-                              ? "bg-amber-100 text-amber-700"
-                              : pub.type === "Book"
-                                ? "bg-emerald-100 text-emerald-700"
-                                : pub.type === "Conference Paper"
-                                  ? "bg-blue-100 text-blue-700"
-                                  : pub.type === "Poster"
-                                    ? "bg-rose-100 text-rose-700"
-                                    : "bg-indigo-100 text-indigo-700"
+                          publicationTypeStyles[pub.type] ??
+                          defaultPublicationTypeStyle
                         }`}
                       >
                         {pub.type}
                       </span>
                       {pub.fullText && (
-                        <span className="text-emerald-600 text-[10px] font-medium">
+                        <span className="text-indigo-600 text-[10px] font-medium">
                           ✓ Full Text
                         </span>
                       )}
@@ -709,7 +727,7 @@ export default function ResearchInterests() {
                     <div className="text-xs text-gray-500 mt-1">
                       {pub.authors.join(", ")}
                     </div>
-                  </div>
+                  </SlideUp>
                 ))}
               </div>
 
@@ -736,7 +754,7 @@ export default function ResearchInterests() {
           {/* Right Column - Sidebar */}
           <div className="space-y-6">
             {/* Affiliation */}
-            <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
+            <SlideUp className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-6 text-white shadow-xl">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-white/20 rounded-lg">
                   <GraduationCap className="w-5 h-5 text-white" />
@@ -761,13 +779,16 @@ export default function ResearchInterests() {
                   <span>October 2021 - Present</span>
                 </div>
                 <div className="bg-white/10 rounded-xl p-3 text-center">
-                  <span className="text-sm font-medium">Master's Student</span>
+                  <span className="text-sm font-medium">Master&apos;s Student</span>
                 </div>
               </div>
-            </div>
+            </SlideUp>
 
             {/* ResearchGate Stats */}
-            <div className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-6 text-white shadow-xl">
+            <SlideUp
+              delay={2}
+              className="bg-gradient-to-br from-indigo-700 to-indigo-900 rounded-2xl p-6 text-white shadow-xl"
+            >
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-white/20 rounded-lg">
                   <Globe className="w-5 h-5 text-white" />
@@ -784,15 +805,18 @@ export default function ResearchInterests() {
                   <div className="text-xs text-indigo-200">Reads</div>
                 </div>
               </div>
-              <button className="mt-4 w-full py-2 bg-white text-emerald-700 font-semibold rounded-xl hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2">
+              <button className="mt-4 w-full py-2 bg-white text-indigo-700 font-semibold rounded-xl hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2">
                 <Globe className="w-4 h-4" />
                 Visit Profile
                 <ExternalLink className="w-3 h-3" />
               </button>
-            </div>
+            </SlideUp>
 
             {/* Quick Stats */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <SlideUp
+              delay={3}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+            >
               <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-4">
                 Quick Stats
               </h3>
@@ -824,23 +848,26 @@ export default function ResearchInterests() {
                   <span className="text-sm font-bold text-indigo-600">3</span>
                 </div>
               </div>
-            </div>
+            </SlideUp>
 
             {/* Prospective PhD */}
-            <div className="bg-gradient-to-br from-amber-600 to-orange-600 rounded-2xl p-6 text-white shadow-xl">
+            <SlideUp
+              delay={4}
+              className="bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl p-6 text-white shadow-xl"
+            >
               <div className="flex items-center gap-3 mb-3">
                 <div className="p-2 bg-white/20 rounded-lg">
                   <Award className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-lg font-bold">Prospective PhD Candidate</h3>
               </div>
-              <p className="text-amber-100 text-sm">
+              <p className="text-indigo-100 text-sm">
                 Always Open to New Ideas & Collaborations
               </p>
-              <button className="mt-3 w-full py-2 bg-white text-amber-700 font-semibold rounded-xl hover:bg-amber-50 transition-colors">
-                Let's Connect
+              <button className="mt-3 w-full py-2 bg-white text-indigo-700 font-semibold rounded-xl hover:bg-indigo-50 transition-colors">
+                Let&apos;s Connect
               </button>
-            </div>
+            </SlideUp>
           </div>
         </div>
       </div>

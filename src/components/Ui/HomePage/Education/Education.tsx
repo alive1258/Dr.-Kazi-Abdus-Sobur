@@ -5,11 +5,12 @@ import {
   Calendar,
   Award,
   BookOpen,
-  School,
   Building2,
   ExternalLink,
 } from "lucide-react";
 import { useState } from "react";
+import SlideDown from "@/src/components/Common/Animaation/SlideDown";
+import SlideUp from "@/src/components/Common/Animaation/SlideUp";
 
 export default function Education() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
@@ -36,8 +37,8 @@ export default function Education() {
         "Veterinary Microbiology",
       ],
       type: "Master's",
-      color: "from-emerald-500 to-teal-500",
-      bgColor: "bg-emerald-50",
+      color: "from-indigo-500 to-indigo-600",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 2,
@@ -81,8 +82,8 @@ export default function Education() {
         "Clinical Skills",
       ],
       type: "Doctorate",
-      color: "from-blue-500 to-indigo-500",
-      bgColor: "bg-blue-50",
+      color: "from-indigo-600 to-indigo-700",
+      bgColor: "bg-indigo-100",
     },
     {
       id: 3,
@@ -95,8 +96,8 @@ export default function Education() {
       activities: "Science Olympiad Participant",
       skills: ["Academic Writing", "Analytical Thinking", "Science Foundation"],
       type: "Higher Secondary",
-      color: "from-amber-500 to-orange-500",
-      bgColor: "bg-amber-50",
+      color: "from-indigo-400 to-indigo-500",
+      bgColor: "bg-indigo-50",
     },
     {
       id: 4,
@@ -109,8 +110,8 @@ export default function Education() {
       activities: "Online Learning",
       skills: ["Leadership", "Organizational Behavior", "Strategic Thinking"],
       type: "Certificate",
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-50",
+      color: "from-indigo-700 to-indigo-800",
+      bgColor: "bg-indigo-100",
     },
     {
       id: 5,
@@ -123,8 +124,8 @@ export default function Education() {
       activities: "Online Learning",
       skills: ["Biochemistry", "Molecular Biology", "Genetics"],
       type: "Certificate",
-      color: "from-rose-500 to-red-500",
-      bgColor: "bg-rose-50",
+      color: "from-indigo-500 to-indigo-800",
+      bgColor: "bg-indigo-50",
     },
   ];
 
@@ -139,19 +140,19 @@ export default function Education() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-12">
-          <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg shadow-indigo-200">
-            <GraduationCap className="w-8 h-8 text-white" />
+        <SlideDown className="flex items-center gap-4 mb-10 md:mb-12">
+          <div className="p-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl shadow-lg shadow-indigo-200">
+            <GraduationCap className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
           </div>
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
               Education
             </h2>
             <p className="text-gray-500 mt-1">
               Academic journey & continuous learning
             </p>
           </div>
-        </div>
+        </SlideDown>
 
         {/* Education Timeline */}
         <div className="relative">
@@ -160,9 +161,13 @@ export default function Education() {
 
           <div className="space-y-6">
             {educationData.map((edu, index) => (
-              <div key={edu.id} className="relative md:flex md:gap-6 group">
+              <SlideUp
+                key={edu.id}
+                delay={Math.min(index + 1, 6)}
+                className="relative md:flex md:gap-6 group"
+              >
                 {/* Timeline Dot */}
-                <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-bold text-sm shadow-lg shadow-indigo-200 flex-shrink-0 mt-1 z-10">
+                <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 text-white font-bold text-sm shadow-lg shadow-indigo-200 flex-shrink-0 mt-1 z-10">
                   {index + 1}
                 </div>
 
@@ -277,39 +282,53 @@ export default function Education() {
                     )}
                   </div>
                 </div>
-              </div>
+              </SlideUp>
             ))}
           </div>
         </div>
 
         {/* Education Stats */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-3xl font-bold text-indigo-600">
-              {educationData.length}
+          <SlideUp delay={1}>
+            <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="text-2xl sm:text-3xl font-bold text-indigo-600">
+                {educationData.length}
+              </div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">
+                Degrees & Certificates
+              </div>
             </div>
-            <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-              Degrees & Certificates
+          </SlideUp>
+          <SlideUp delay={2}>
+            <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="text-2xl sm:text-3xl font-bold text-indigo-600">
+                3
+              </div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">
+                Universities
+              </div>
             </div>
-          </div>
-          <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-3xl font-bold text-indigo-600">3</div>
-            <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-              Universities
+          </SlideUp>
+          <SlideUp delay={3}>
+            <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="text-2xl sm:text-3xl font-bold text-indigo-600">
+                40+
+              </div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">
+                Skills Acquired
+              </div>
             </div>
-          </div>
-          <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-3xl font-bold text-indigo-600">40+</div>
-            <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-              Skills Acquired
+          </SlideUp>
+          <SlideUp delay={4}>
+            <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="text-2xl sm:text-3xl font-bold text-indigo-600">
+                10+
+              </div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">
+                Years of Study
+              </div>
             </div>
-          </div>
-          <div className="bg-white rounded-2xl p-5 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-3xl font-bold text-indigo-600">10+</div>
-            <div className="text-xs text-gray-500 uppercase tracking-wider mt-1">
-              Years of Study
-            </div>
-          </div>
+          </SlideUp>
         </div>
       </div>
     </section>

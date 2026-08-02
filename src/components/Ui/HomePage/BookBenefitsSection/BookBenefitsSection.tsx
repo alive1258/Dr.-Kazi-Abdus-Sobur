@@ -11,6 +11,7 @@ import {
   MapPin,
   CheckCircle2,
 } from "lucide-react";
+import SlideUp from "@/src/components/Common/Animaation/SlideUp";
 
 interface Feature {
   title: string;
@@ -71,31 +72,34 @@ const features: Feature[] = [
 
 const BookBenefitsSection = () => {
   return (
-    <section className="py-20 px-4 bg-[#070312] relative overflow-hidden">
+    <section className="py-16 sm:py-20 px-4 bg-[#070312] relative overflow-hidden">
       {/* background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-700/20 blur-[160px] rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-700/20 blur-[160px] rounded-full" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* heading */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            বইটি আপনার বিজনেসকে সহজ করবে যেভাবে
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            আপনার স্বপ্ন আর পরিকল্পনার মাঝখানের দূরত্ব কমাতেই এই বই।  
-            শুধু ব্যবসা শুরু নয় — শুরু থেকেই লাভজনকভাবে পরিচালনার রোডম্যাপ।
-          </p>
-        </div>
+        <SlideUp>
+          <div className="text-center mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+              বইটি আপনার বিজনেসকে সহজ করবে যেভাবে
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              আপনার স্বপ্ন আর পরিকল্পনার মাঝখানের দূরত্ব কমাতেই এই বই।
+              শুধু ব্যবসা শুরু নয় — শুরু থেকেই লাভজনকভাবে পরিচালনার রোডম্যাপ।
+            </p>
+          </div>
+        </SlideUp>
 
         {/* grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((item, index) => (
-            <div
+            <SlideUp
               key={index}
-              className="group p-6 rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl hover:border-purple-500/40 hover:-translate-y-1 transition-all duration-300"
+              delay={Math.min(index + 1, 6)}
+              className="group p-6 rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 backdrop-blur-xl hover:border-indigo-500/40 hover:-translate-y-1 transition-all duration-300"
             >
               {/* icon */}
-              <div className="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center mb-4 group-hover:scale-110 transition">
+              <div className="w-12 h-12 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center mb-4 group-hover:scale-110 transition">
                 {item.icon}
               </div>
 
@@ -108,19 +112,21 @@ const BookBenefitsSection = () => {
               <p className="text-gray-400 text-sm leading-relaxed">
                 {item.description}
               </p>
-            </div>
+            </SlideUp>
           ))}
         </div>
 
         {/* bottom CTA */}
-        <div className="text-center mt-16">
-          <a
-            href="#checkout-section"
-            className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:scale-105 transition"
-          >
-            এখনই বইটি অর্ডার করুন
-          </a>
-        </div>
+        <SlideUp>
+          <div className="text-center mt-16">
+            <a
+              href="#checkout-section"
+              className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700 text-white font-semibold shadow-lg hover:scale-105 transition"
+            >
+              এখনই বইটি অর্ডার করুন
+            </a>
+          </div>
+        </SlideUp>
       </div>
     </section>
   );

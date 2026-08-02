@@ -21,9 +21,9 @@ const Button = ({
   const baseStyles = "px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 inline-flex items-center justify-center";
   
   const variants = {
-    primary: "text-white bg-[#6366F1] hover:bg-[#4F46E5]",
-    secondary: "text-white bg-[#1A1B1F] hover:bg-[#252528]",
-    outline: "text-white bg-transparent border border-[#252528] hover:bg-[#252528]"
+    primary: "text-white bg-indigo-700 hover:bg-indigo-800",
+    secondary: "text-indigo-700 bg-indigo-50 hover:bg-indigo-100",
+    outline: "text-indigo-700 bg-transparent border border-indigo-200 hover:bg-indigo-50"
   };
   
   const buttonClass = `${baseStyles} ${variants[variant]} ${className}`;

@@ -32,7 +32,7 @@ export default function Navigation() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-600 hover:text-indigo-700 font-medium transition text-sm whitespace-nowrap"
+                className="text-gray-600 hover:text-indigo-700 font-medium transition-colors duration-200 text-sm whitespace-nowrap"
               >
                 {item}
               </a>
@@ -41,7 +41,8 @@ export default function Navigation() {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+            className="md:hidden p-2 rounded-lg text-indigo-700 hover:bg-indigo-50 transition-colors duration-200"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
               <X className="w-6 h-6" />
@@ -59,7 +60,7 @@ export default function Navigation() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-600 hover:text-indigo-700 font-medium text-sm py-2 px-3 rounded-lg hover:bg-gray-50 transition"
+                className="text-gray-600 hover:text-indigo-700 font-medium text-sm py-2 px-3 rounded-lg hover:bg-indigo-50 transition-colors duration-200"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item}

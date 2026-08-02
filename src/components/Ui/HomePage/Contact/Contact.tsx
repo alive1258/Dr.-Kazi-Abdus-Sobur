@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { siteConfig } from "@/src/utils/data";
 import {
@@ -11,13 +11,15 @@ import {
   MessageCircle,
   Clock,
   CheckCircle,
-  ArrowRight,
   Sparkles,
   User,
   FileText,
   Calendar,
 } from "lucide-react";
 import { useState } from "react";
+import SlideUp from "@/src/components/Common/Animaation/SlideUp";
+import SlideLeft from "@/src/components/Common/Animaation/SlideLeft";
+import SlideRight from "@/src/components/Common/Animaation/SlideRight";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -100,115 +102,128 @@ export default function Contact() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-12">
-          <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg shadow-indigo-200">
-            <MessageCircle className="w-8 h-8 text-white" />
+        <SlideUp>
+          <div className="flex items-center gap-4 mb-12">
+            <div className="p-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl shadow-lg shadow-indigo-200">
+              <MessageCircle className="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
+                Get in Touch
+              </h2>
+              <p className="text-gray-500 mt-1">
+                Let&apos;s connect and collaborate
+              </p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-              Get in Touch
-            </h2>
-            <p className="text-gray-500 mt-1">Let's connect and collaborate</p>
-          </div>
-        </div>
+        </SlideUp>
 
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Left - Contact Info */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Contact Cards */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-4 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-indigo-600" />
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-start gap-3 group">
-                    <div className="p-2 bg-indigo-50 rounded-xl text-indigo-600 group-hover:bg-indigo-100 transition-colors">
-                      {item.icon}
+          <div className="lg:col-span-2">
+            <SlideRight className="space-y-6">
+              {/* Contact Cards */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-indigo-600" />
+                  Contact Information
+                </h3>
+                <div className="space-y-4">
+                  {contactInfo.map((item, index) => (
+                    <div key={index} className="flex items-start gap-3 group">
+                      <div className="p-2 bg-indigo-50 rounded-xl text-indigo-600 group-hover:bg-indigo-100 transition-colors">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs text-gray-400 font-medium">
+                          {item.label}
+                        </p>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            target={
+                              item.href.startsWith("http")
+                                ? "_blank"
+                                : undefined
+                            }
+                            rel={
+                              item.href.startsWith("http")
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
+                            className="text-sm text-gray-700 hover:text-indigo-600 transition-colors break-words"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="text-sm text-gray-700">
+                            {item.value}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <p className="text-xs text-gray-400 font-medium">
-                        {item.label}
-                      </p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          target={
-                            item.href.startsWith("http") ? "_blank" : undefined
-                          }
-                          rel={
-                            item.href.startsWith("http")
-                              ? "noopener noreferrer"
-                              : undefined
-                          }
-                          className="text-sm text-gray-700 hover:text-indigo-600 transition-colors"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-sm text-gray-700">{item.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Availability */}
-            <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
-              <h3 className="text-sm font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                Availability
-              </h3>
-              <div className="space-y-3">
-                {availability.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 bg-white/10 rounded-xl p-3"
+              {/* Availability */}
+              <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-6 text-white shadow-xl">
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  Availability
+                </h3>
+                <div className="space-y-3">
+                  {availability.map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 bg-white/10 rounded-xl p-3"
+                    >
+                      <div className="text-indigo-200">{item.icon}</div>
+                      <div>
+                        <p className="text-xs text-indigo-200">
+                          {item.label}
+                        </p>
+                        <p className="text-sm font-medium">{item.value}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex items-center gap-2 text-sm text-indigo-200">
+                  <CheckCircle className="w-4 h-4 text-indigo-300" />
+                  <span>I&apos;ll respond within 24 hours</span>
+                </div>
+              </div>
+
+              {/* Quick Connect */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-3">
+                  Quick Connect
+                </h3>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={siteConfig.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
                   >
-                    <div className="text-indigo-200">{item.icon}</div>
-                    <div>
-                      <p className="text-xs text-indigo-200">{item.label}</p>
-                      <p className="text-sm font-medium">{item.value}</p>
-                    </div>
-                  </div>
-                ))}
+                    LinkedIn
+                  </a>
+                  <a
+                    href={siteConfig.social.researchgate}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2.5 bg-indigo-500 text-white text-sm font-medium rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
+                  >
+                    ResearchGate
+                  </a>
+                </div>
               </div>
-              <div className="mt-4 flex items-center gap-2 text-sm text-indigo-200">
-                <CheckCircle className="w-4 h-4 text-emerald-400" />
-                <span>I'll respond within 24 hours</span>
-              </div>
-            </div>
-
-            {/* Quick Connect */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wider mb-3">
-                Quick Connect
-              </h3>
-              <div className="flex gap-3">
-                <a
-                  href={siteConfig.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-2.5 bg-[#0077B5] text-white text-sm font-medium rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href={siteConfig.social.researchgate}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-2.5 bg-[#00CCBB] text-white text-sm font-medium rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
-                >
-                  ResearchGate
-                </a>
-              </div>
-            </div>
+            </SlideRight>
           </div>
 
           {/* Right - Contact Form */}
           <div className="lg:col-span-3">
+            <SlideLeft>
             <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2 bg-indigo-100 rounded-lg">
@@ -220,13 +235,13 @@ export default function Contact() {
               </div>
 
               {isSubmitted ? (
-                <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center">
-                  <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto mb-3" />
-                  <h4 className="text-lg font-bold text-emerald-700">
+                <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-6 text-center">
+                  <CheckCircle className="w-12 h-12 text-indigo-500 mx-auto mb-3" />
+                  <h4 className="text-lg font-bold text-indigo-700">
                     Message Sent!
                   </h4>
-                  <p className="text-emerald-600 text-sm">
-                    Thank you for reaching out. I'll get back to you within 24
+                  <p className="text-indigo-600 text-sm">
+                    Thank you for reaching out. I&apos;ll get back to you within 24
                     hours.
                   </p>
                 </div>
@@ -304,7 +319,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-indigo-200 hover:shadow-indigo-300 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-indigo-200 hover:shadow-indigo-300 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -320,12 +335,13 @@ export default function Contact() {
                   </button>
 
                   <p className="text-xs text-gray-400 text-center mt-2">
-                    I'll respond within 24 hours. Your information will be kept
+                    I&apos;ll respond within 24 hours. Your information will be kept
                     confidential.
                   </p>
                 </form>
               )}
             </div>
+            </SlideLeft>
           </div>
         </div>
       </div>

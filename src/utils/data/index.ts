@@ -338,33 +338,6 @@ export const gallery = [
   "Speaking Event",
 ];
 
-export const blogPosts = [
-  {
-    title: "Research Tips for Early-Career Scientists",
-    excerpt:
-      "Essential strategies for publishing your first paper and building a research career.",
-    date: "Mar 2026",
-  },
-  {
-    title: "Career Advice: From Academia to Industry",
-    excerpt:
-      "How to transition from academic research to applied science and business roles.",
-    date: "Feb 2026",
-  },
-  {
-    title: "Scientific Writing Masterclass",
-    excerpt:
-      "A comprehensive guide to writing clear, impactful research papers.",
-    date: "Jan 2026",
-  },
-  {
-    title: "Publication Strategy Guide",
-    excerpt:
-      "How to choose the right journal and navigate the publishing process successfully.",
-    date: "Dec 2025",
-  },
-];
-
 export const faqs = [
   {
     question: "How can I collaborate with you?",
