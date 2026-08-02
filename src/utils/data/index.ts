@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline:
     "Bridging technical expertise with business insight to drive impactful research and innovation.",
   email: "kazi.sobur@example.com",
-  phone: "+880 1XXX-XXXXXX",
+  phone: "+880 17.........",
   location: "Bangladesh",
   social: {
     linkedin: "https://linkedin.com/in/...",
